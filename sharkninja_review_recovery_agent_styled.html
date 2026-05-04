@@ -1,0 +1,237 @@
+<style>
+.sn2 { font-family: var(--font-sans); padding: 1rem 0; color: #1a1a2e; }
+.sn2-hero { background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%); border-radius: 16px; padding: 20px 24px; margin-bottom: 16px; color: white; position: relative; overflow: hidden; }
+.sn2-hero::after { content: ''; position: absolute; top: -40px; right: -40px; width: 200px; height: 200px; border-radius: 50%; background: radial-gradient(circle, rgba(99,102,241,0.25) 0%, transparent 70%); }
+.sn2-hero-row { display: flex; justify-content: space-between; align-items: flex-start; position: relative; z-index: 1; }
+.sn2-brand { display: flex; align-items: center; gap: 10px; }
+.sn2-logo { width: 36px; height: 36px; border-radius: 10px; background: linear-gradient(135deg, #6366f1, #a855f7); display: flex; align-items: center; justify-content: center; font-weight: 600; color: white; font-size: 14px; letter-spacing: -0.5px; }
+.sn2-brand-text { line-height: 1.2; }
+.sn2-brand-name { font-size: 15px; font-weight: 500; margin: 0; letter-spacing: -0.2px; }
+.sn2-brand-sub { font-size: 11px; color: rgba(255,255,255,0.55); margin: 2px 0 0; }
+.sn2-status { display: flex; align-items: center; gap: 6px; font-size: 11px; color: rgba(255,255,255,0.7); }
+.sn2-pulse { width: 6px; height: 6px; border-radius: 50%; background: #10b981; box-shadow: 0 0 0 0 rgba(16,185,129,0.7); animation: sn2pulse 2s infinite; }
+@keyframes sn2pulse { 0% { box-shadow: 0 0 0 0 rgba(16,185,129,0.7); } 70% { box-shadow: 0 0 0 8px rgba(16,185,129,0); } 100% { box-shadow: 0 0 0 0 rgba(16,185,129,0); } }
+.sn2-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 18px; position: relative; z-index: 1; }
+.sn2-stat { background: rgba(255,255,255,0.06); backdrop-filter: blur(10px); border: 0.5px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 10px 12px; }
+.sn2-stat-label { font-size: 10px; color: rgba(255,255,255,0.55); margin: 0 0 4px; text-transform: uppercase; letter-spacing: 0.6px; font-weight: 500; }
+.sn2-stat-row { display: flex; align-items: baseline; gap: 8px; }
+.sn2-stat-value { font-size: 22px; font-weight: 500; color: white; margin: 0; letter-spacing: -0.5px; }
+.sn2-stat-delta { font-size: 10px; color: #10b981; font-weight: 500; }
+.sn2-grid { display: grid; grid-template-columns: 252px minmax(0, 1fr); gap: 12px; }
+.sn2-list-wrap { display: flex; flex-direction: column; gap: 8px; }
+.sn2-list-header { font-size: 11px; color: #64748b; text-transform: uppercase; letter-spacing: 0.6px; font-weight: 500; padding: 0 4px; display: flex; justify-content: space-between; }
+.sn2-list-count { background: #f1f5f9; color: #475569; padding: 1px 7px; border-radius: 10px; font-size: 10px; }
+.sn2-list { display: flex; flex-direction: column; gap: 6px; max-height: 580px; overflow-y: auto; padding-right: 4px; }
+.sn2-list::-webkit-scrollbar { width: 4px; }
+.sn2-list::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+.sn2-item { background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 11px 13px; cursor: pointer; transition: all 0.15s; position: relative; }
+.sn2-item:hover { border-color: #cbd5e1; transform: translateY(-1px); }
+.sn2-item.active { border-color: #6366f1; box-shadow: 0 0 0 3px rgba(99,102,241,0.1); background: linear-gradient(180deg, #fafbff 0%, white 100%); }
+.sn2-item-strip { position: absolute; left: 0; top: 12px; bottom: 12px; width: 3px; border-radius: 0 2px 2px 0; }
+.sn2-item-strip.critical { background: #ef4444; }
+.sn2-item-strip.high { background: #f59e0b; }
+.sn2-item-strip.medium { background: #3b82f6; }
+.sn2-item-row { display: flex; align-items: center; gap: 6px; margin-bottom: 5px; padding-left: 4px; }
+.sn2-source { font-size: 9px; font-weight: 600; padding: 2px 6px; border-radius: 4px; letter-spacing: 0.4px; }
+.sn2-source.trustpilot { background: #ecfdf5; color: #065f46; }
+.sn2-source.bbb { background: #eff6ff; color: #1e40af; }
+.sn2-source.reddit { background: #fef2f2; color: #991b1b; }
+.sn2-urgency { font-size: 9px; font-weight: 600; padding: 2px 6px; border-radius: 4px; margin-left: auto; letter-spacing: 0.4px; text-transform: uppercase; }
+.sn2-urgency.critical { background: #fef2f2; color: #991b1b; }
+.sn2-urgency.high { background: #fffbeb; color: #92400e; }
+.sn2-urgency.medium { background: #eff6ff; color: #1e40af; }
+.sn2-name { font-size: 13px; font-weight: 500; margin: 0; padding-left: 4px; color: #0f172a; }
+.sn2-meta { font-size: 11px; color: #64748b; margin: 2px 0 0; padding-left: 4px; }
+.sn2-snippet { font-size: 11.5px; color: #475569; margin: 6px 0 0; padding-left: 4px; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.sn2-detail { display: flex; flex-direction: column; gap: 12px; }
+.sn2-card { background: white; border: 1px solid #e2e8f0; border-radius: 14px; padding: 16px 18px; }
+.sn2-card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.sn2-card-label { font-size: 10px; color: #64748b; text-transform: uppercase; letter-spacing: 0.7px; font-weight: 600; margin: 0; }
+.sn2-icon { width: 24px; height: 24px; border-radius: 7px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.sn2-card-titlerow { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.sn2-card-titlerow .sn2-card-label { margin: 0; }
+.sn2-review-block { padding: 12px 14px; background: #f8fafc; border-radius: 10px; border-left: 3px solid #cbd5e1; }
+.sn2-review-text { font-size: 13px; line-height: 1.65; margin: 0; color: #1e293b; font-style: italic; }
+.sn2-review-meta { display: flex; gap: 14px; font-size: 11px; color: #64748b; margin: 12px 0 0; flex-wrap: wrap; align-items: center; }
+.sn2-review-meta span { display: flex; align-items: center; gap: 5px; }
+.sn2-stars { color: #f59e0b; letter-spacing: 1.5px; font-size: 11px; }
+.sn2-stars-empty { color: #e2e8f0; }
+.sn2-match { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 24px; font-size: 12px; }
+.sn2-match-cell { display: flex; flex-direction: column; gap: 2px; }
+.sn2-match-key { color: #94a3b8; font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 500; }
+.sn2-match-val { font-weight: 500; color: #0f172a; font-size: 13px; }
+.sn2-confidence { display: inline-block; font-size: 10px; font-weight: 600; padding: 3px 8px; border-radius: 5px; letter-spacing: 0.3px; }
+.sn2-confidence.high { background: #ecfdf5; color: #065f46; }
+.sn2-confidence.medium { background: #fffbeb; color: #92400e; }
+.sn2-summary-card { background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); border: 1px solid #e2e8f0; border-radius: 14px; padding: 16px 18px; }
+.sn2-summary { font-size: 13px; line-height: 1.7; margin: 0; color: #1e293b; }
+.sn2-summary strong { font-weight: 600; color: #0f172a; }
+.sn2-action-card { background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%); border-radius: 14px; padding: 16px 18px; color: white; position: relative; overflow: hidden; }
+.sn2-action-card::after { content: ''; position: absolute; bottom: -50px; right: -50px; width: 180px; height: 180px; border-radius: 50%; background: radial-gradient(circle, rgba(168,85,247,0.4) 0%, transparent 70%); }
+.sn2-action-card .sn2-card-label { color: rgba(255,255,255,0.7); position: relative; z-index: 1; }
+.sn2-action-text { font-size: 13px; line-height: 1.65; margin: 0 0 14px; color: white; position: relative; z-index: 1; }
+.sn2-buttons { display: flex; gap: 8px; position: relative; z-index: 1; }
+.sn2-btn { padding: 9px 14px; font-size: 12px; font-weight: 500; border-radius: 8px; border: none; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+.sn2-btn-primary { background: white; color: #4f46e5; flex: 1; }
+.sn2-btn-primary:hover { background: #f8fafc; transform: translateY(-1px); }
+.sn2-btn-ghost { background: rgba(255,255,255,0.15); color: white; border: 1px solid rgba(255,255,255,0.25); }
+.sn2-btn-ghost:hover { background: rgba(255,255,255,0.25); }
+.sn2-pattern-card { background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border: 1px solid #fcd34d; border-radius: 14px; padding: 16px 18px; }
+.sn2-pattern-card .sn2-card-label { color: #92400e; }
+.sn2-pattern-text { font-size: 13px; line-height: 1.65; margin: 0; color: #78350f; }
+.sn2-pattern-text strong { font-weight: 600; color: #451a03; }
+.sn2-pattern-route { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; color: #92400e; font-weight: 500; margin-top: 8px; padding: 4px 10px; background: rgba(255,255,255,0.5); border-radius: 6px; }
+.sn2-empty { padding: 60px 40px; text-align: center; color: #94a3b8; font-size: 13px; background: white; border: 1px dashed #e2e8f0; border-radius: 14px; }
+.sn2-divider { height: 1px; background: #f1f5f9; margin: 12px 0; }
+</style>
+
+<h2 class="sr-only">SharkNinja public review recovery agent dashboard with stylized branded design, 10 incoming reviews, customer match data, case summaries, and recommended actions</h2>
+
+<div class="sn2">
+  <div class="sn2-hero">
+    <div class="sn2-hero-row">
+      <div class="sn2-brand">
+        <div class="sn2-logo">SN</div>
+        <div class="sn2-brand-text">
+          <p class="sn2-brand-name">Public review recovery agent</p>
+          <p class="sn2-brand-sub">Trustpilot · BBB · Reddit · Amazon · last 24 hours</p>
+        </div>
+      </div>
+      <div class="sn2-status">
+        <span class="sn2-pulse"></span>
+        <span>Live · 2 min ago</span>
+      </div>
+    </div>
+    <div class="sn2-stats">
+      <div class="sn2-stat"><p class="sn2-stat-label">Detected today</p><div class="sn2-stat-row"><p class="sn2-stat-value">23</p><span class="sn2-stat-delta">↑ 4 vs avg</span></div></div>
+      <div class="sn2-stat"><p class="sn2-stat-label">Auto-resolvable</p><div class="sn2-stat-row"><p class="sn2-stat-value">14</p><span class="sn2-stat-delta">61%</span></div></div>
+      <div class="sn2-stat"><p class="sn2-stat-label">Avg time to action</p><div class="sn2-stat-row"><p class="sn2-stat-value">7<span style="font-size:13px;font-weight:400;opacity:0.7;"> min</span></p><span class="sn2-stat-delta">vs 4–14 days</span></div></div>
+      <div class="sn2-stat"><p class="sn2-stat-label">Pattern alerts</p><div class="sn2-stat-row"><p class="sn2-stat-value">4</p><span class="sn2-stat-delta">→ product</span></div></div>
+    </div>
+  </div>
+
+  <div class="sn2-grid">
+    <div class="sn2-list-wrap">
+      <div class="sn2-list-header"><span>Incoming queue</span><span class="sn2-list-count" id="sn2-count">10</span></div>
+      <div class="sn2-list" id="sn2-list"></div>
+    </div>
+    <div class="sn2-detail" id="sn2-detail"><div class="sn2-empty">Select a review to see the case file</div></div>
+  </div>
+</div>
+
+<script>
+const r2 = [
+  { id: 1, source: 'trustpilot', urgency: 'critical', name: 'Sarah K.', location: 'Manchester, UK', product: 'TurboBlade Cool + Heat', rating: 1, posted: '2h ago', text: "Purchased the Shark TurboBlade Cool + Heat via TikTok but requested a return as it's a very loud machine and heavy. I arranged for DPD to collect for next day delivery and delivery was confirmed however, SharkNinja are saying it was not received and have refused to refund the cost plus postage. This is a scam.", match: { confidence: 'high', orderNo: 'SN-UK-447821', purchased: 'Nov 12, 2025', value: '£329.00', priorTickets: 4, ltv: '£612' }, summary: "<strong>Returned product Dec 3 via DPD;</strong> courier confirmed delivery to warehouse Dec 5 with signature. No refund issued in 6 weeks. Customer has called 4 times, just posted public review using the word \"scam\" — high reputational risk.", action: "Verify courier delivery in warehouse intake log (DPD tracking #DP4471829). Issue full refund of £329 + £15 goodwill credit. Personalized email from named senior agent referencing tracking number. Follow up Jan 21 to request review update.", pattern: null },
+  { id: 2, source: 'trustpilot', urgency: 'high', name: 'Marcus R.', location: 'Ohio, US', product: 'TurboBlade Cool + Heat', rating: 1, posted: '5h ago', text: "Bought the TurboBlade for $349 and the noise is unbearable. Cannot run it in the same room as the TV. Trying to return it but the unit can't be dismantled because the blades lock in. Couriers won't take it without packaging.", match: { confidence: 'high', orderNo: 'SN-US-991204', purchased: 'Dec 1, 2025', value: '$349.00', priorTickets: 1, ltv: '$349' }, summary: "<strong>Product noise complaint + return logistics blocker.</strong> Customer cannot dismantle TurboBlade and standard couriers won't collect oversized item without packaging. Has only contacted CS once — still recoverable.", action: "Dispatch arranged freight pickup (no packaging required). Issue full refund on collection. Send packaging-free return instructions. Note: 3rd TurboBlade noise complaint this week — see pattern alert.", pattern: { type: 'product engineering', text: "<strong>3rd TurboBlade noise complaint this week.</strong> Routing aggregated signal to product engineering team. If pattern persists ≥10 over 30 days, recommend ethnographic deep-dive." } },
+  { id: 3, source: 'bbb', urgency: 'critical', name: 'Linda P.', location: 'Texas, US', product: 'Ninja Foodi Pressure Cooker', rating: 1, posted: '8h ago', text: "Filed complaint about my Foodi pressure cooker recall lid replacement. Submitted forms 3 weeks ago and have not received the replacement. Burned my hand and now I'm reading there's a class action. SharkNinja is non-responsive.", match: { confidence: 'high', orderNo: 'SN-US-RECALL-22841', purchased: 'Aug 2024', value: 'Recall replacement', priorTickets: 6, ltv: '$248' }, summary: "<strong>Active recall replacement stuck in queue + reported burn injury.</strong> Customer is in CPSC recall cohort, replacement lid not shipped after 3 weeks. Mentions class action — legal escalation warranted. 6 prior tickets unresolved.", action: "ESCALATE to legal + recall ops. Expedite replacement lid via overnight shipping. Schedule call from senior recall team manager within 24h. Document injury for CPSC reporting compliance. Do not auto-resolve.", pattern: { type: 'recall ops', text: "<strong>Recall replacement workflow showing 17% delay rate this month.</strong> Routing to recall ops director. Foodi recall queue should be running at <2% delay per CPSC commitment." } },
+  { id: 4, source: 'trustpilot', urgency: 'high', name: 'Jennifer M.', location: 'California, US', product: 'Shark FlexStyle Hairdryer', rating: 2, posted: '12h ago', text: "I returned my $286 Shark FlexStyle within the window. They received it. Six weeks of calls — 8 different reps, every one tells me it's escalated. No refund. I just want my money back.", match: { confidence: 'high', orderNo: 'SN-US-887119', purchased: 'Nov 28, 2025', value: '$286.00', priorTickets: 8, ltv: '$1,247' }, summary: "<strong>High-LTV customer ($1,247 lifetime).</strong> Refund stuck 6 weeks despite confirmed return receipt. 8 prior touchpoints, all escalations stalled. Loyalty risk — has purchased 4 SharkNinja products historically.", action: "Auto-issue refund of $286 immediately + $50 goodwill credit on next order. Personal apology email from VP of CX. Flag account for white-glove service tier going forward.", pattern: null },
+  { id: 5, source: 'reddit', urgency: 'medium', name: 'u/cleanfreak_92', location: 'r/sharkclean', product: 'Shark AI Robot Vacuum', rating: null, posted: '14h ago', text: "Anyone else's Shark AI robot just stop mapping after the last firmware update? Mine bumps into walls now and the app keeps disconnecting. Out of warranty so I guess I'm SOL.", match: { confidence: 'medium', orderNo: 'inferred via username history', purchased: 'est. early 2024', value: 'unknown', priorTickets: 0, ltv: 'unknown' }, summary: "<strong>Out-of-warranty firmware regression complaint on Reddit.</strong> Customer not in CRM directly. Issue is software/IoT, not physical product — fixable. Anonymous but matches 4 other Reddit threads in last week.", action: "Engineering ticket for firmware regression review. Reply on Reddit thread acknowledging issue + offering free firmware support (no warranty needed). Drives positive sentiment in subreddit + closes feedback loop.", pattern: { type: 'product engineering', text: "<strong>5 Reddit threads in r/sharkclean</strong> citing same firmware-related mapping regression. Routing to robotics engineering — likely needs hotfix push." } },
+  { id: 6, source: 'trustpilot', urgency: 'high', name: 'David T.', location: 'London, UK', product: 'Ninja Foodi 9-in-1', rating: 1, posted: '16h ago', text: "Foodi 9-in-1 stopped working after 22 months. Looked into repair — apparently it's designed to be unrepairable. So I have to chuck a massive electronic product into landfill. So much for sustainability.", match: { confidence: 'high', orderNo: 'SN-UK-552014', purchased: 'Mar 2024', value: '£249.00', priorTickets: 0, ltv: '£249' }, summary: "<strong>Out-of-warranty product failure with sustainability framing.</strong> Customer publicly tying SharkNinja's repair policy to environmental concerns — directly conflicts with stated sustainability priority. 0 prior tickets — no history of escalation.", action: "Offer 40% discount on replacement Foodi + arranged pickup of broken unit for component recycling. Frame as sustainability commitment in response. Trigger product team review: is component-level repair feasible for next-gen Foodi?", pattern: null },
+  { id: 7, source: 'trustpilot', urgency: 'medium', name: 'Patricia W.', location: 'Florida, US', product: 'Ninja CREAMi', rating: 2, posted: '18h ago', text: "Christmas gift for my daughter, opened Dec 25, motor died Jan 3. Tried to return — apparently I'm 5 days past the 30-day window because they count from purchase date in October. Absurd policy for a gift.", match: { confidence: 'high', orderNo: 'SN-US-771298', purchased: 'Oct 28, 2025', value: '$199.00', priorTickets: 1, ltv: '$199' }, summary: "<strong>Christmas gift returns edge case.</strong> Standard 30-day window penalizes seasonal gifting — purchase Oct 28, opened Dec 25. Defective product within 10 days of first use. Policy-vs-judgment moment.", action: "Override 30-day window — seasonal gift exception. Issue full replacement CREAMi. Flag policy gap to CX leadership: recommend formal Holiday Returns extension (Oct purchases → Jan 31 returns).", pattern: null },
+  { id: 8, source: 'trustpilot', urgency: 'medium', name: 'Robert N.', location: 'Bristol, UK', product: 'Shark Cordless Vacuum', rating: 2, posted: '20h ago', text: "Third Shark vacuum I've owned. Pitcher and battery failed three times in two years. Customer service nice on phone but utterly useless — they keep sending replacement parts that also fail.", match: { confidence: 'high', orderNo: 'SN-UK-multiple', purchased: 'multiple 2023-2025', value: '£780 cumulative', priorTickets: 11, ltv: '£780' }, summary: "<strong>Repeat-failure pattern on same customer + product line.</strong> 11 prior tickets, 3 replacement units, all failed. Either defective batch or component-level design issue. High-LTV repeat buyer at risk.", action: "Issue premium replacement model (next tier up) + extended 3-year warranty. Personal call from senior CX. Engineering ticket: pull serial numbers from this account's 3 failed units for component teardown.", pattern: null },
+  { id: 9, source: 'trustpilot', urgency: 'high', name: 'Amanda S.', location: 'Sydney, AU', product: 'Shark Stratos Vacuum', rating: 1, posted: '22h ago', text: "Ordered Nov 30 for $599. Site said in stock. Three weeks later told it's backordered. Asked to cancel — apparently 30-min cancellation window. Money still gone, no product, no timeline.", match: { confidence: 'high', orderNo: 'SN-AU-118842', purchased: 'Nov 30, 2025', value: 'A$599.00', priorTickets: 2, ltv: 'A$599' }, summary: "<strong>Backorder + rigid cancellation window collision.</strong> Site indicated in-stock at time of order. 30-min cancellation cutoff blocks legitimate cancellation request 3 weeks later. AU market — auto-tariff inventory shift likely root cause.", action: "Override cancellation window. Issue full A$599 refund within 24h. Email apology with honest backorder explanation. Escalate inventory data accuracy issue to ops — Q1 supply shifts may be creating false in-stock indicators globally.", pattern: { type: 'supply chain ops', text: "<strong>4 backorder-mismatch complaints across AU/UK markets this week.</strong> Routing to supply chain ops — inventory feed accuracy may be lagging post-tariff sourcing shift." } },
+  { id: 10, source: 'bbb', urgency: 'medium', name: 'Thomas H.', location: 'Pennsylvania, US', product: 'Shark Hydrovac', rating: 1, posted: '23h ago', text: "Bought from Costco, called SharkNinja for warranty — they said since I didn't buy direct they can't help and to call Costco. Costco said warranty is manufacturer's. Going in circles.", match: { confidence: 'medium', orderNo: 'no direct order — Costco purchase', purchased: 'est. Q4 2024', value: '$329.99 (Costco)', priorTickets: 2, ltv: 'unknown' }, summary: "<strong>Cross-retailer warranty handoff failure.</strong> Customer caught between SharkNinja and Costco. Manufacturer warranty applies regardless of channel. Receipt photo upload would resolve identity gap.", action: "Process warranty directly via receipt upload (not order #). Dispatch replacement Hydrovac. Issue policy clarification to CS team: third-party-retailer purchases are covered — this is a recurring training gap.", pattern: null }
+];
+
+const list2 = document.getElementById('sn2-list');
+const detail2 = document.getElementById('sn2-detail');
+
+function render2() {
+  list2.innerHTML = r2.map(r => `
+    <div class="sn2-item" data-id="${r.id}">
+      <div class="sn2-item-strip ${r.urgency}"></div>
+      <div class="sn2-item-row">
+        <span class="sn2-source ${r.source}">${r.source.toUpperCase()}</span>
+        <span class="sn2-urgency ${r.urgency}">${r.urgency}</span>
+      </div>
+      <p class="sn2-name">${r.name}</p>
+      <p class="sn2-meta">${r.product} · ${r.posted}</p>
+      <p class="sn2-snippet">${r.text}</p>
+    </div>
+  `).join('');
+  list2.querySelectorAll('.sn2-item').forEach(el => {
+    el.addEventListener('click', () => select2(parseInt(el.dataset.id)));
+  });
+}
+
+function select2(id) {
+  const r = r2.find(x => x.id === id);
+  list2.querySelectorAll('.sn2-item').forEach(el => {
+    el.classList.toggle('active', parseInt(el.dataset.id) === id);
+  });
+  const fullStars = r.rating || 0;
+  const stars = r.rating ? `<span class="sn2-stars">${'★'.repeat(fullStars)}<span class="sn2-stars-empty">${'★'.repeat(5-fullStars)}</span></span>` : '<span style="font-size:11px;color:#94a3b8;">No rating</span>';
+  detail2.innerHTML = `
+    <div class="sn2-card">
+      <div class="sn2-card-titlerow">
+        <div class="sn2-icon" style="background:#f1f5f9;color:#475569;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        </div>
+        <p class="sn2-card-label">Detected review · ${r.source} · ${r.posted}</p>
+      </div>
+      <div class="sn2-review-block">
+        <p class="sn2-review-text">"${r.text}"</p>
+      </div>
+      <div class="sn2-review-meta">
+        <span>${stars}</span>
+        <span>${r.name}</span>
+        <span>${r.location}</span>
+        <span>${r.product}</span>
+      </div>
+    </div>
+    <div class="sn2-card">
+      <div class="sn2-card-titlerow">
+        <div class="sn2-icon" style="background:#ecfdf5;color:#065f46;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <p class="sn2-card-label">Customer match</p>
+        <span class="sn2-confidence ${r.match.confidence}" style="margin-left:auto;">${r.match.confidence} confidence</span>
+      </div>
+      <div class="sn2-match">
+        <div class="sn2-match-cell"><span class="sn2-match-key">Order</span><span class="sn2-match-val">${r.match.orderNo}</span></div>
+        <div class="sn2-match-cell"><span class="sn2-match-key">Purchased</span><span class="sn2-match-val">${r.match.purchased}</span></div>
+        <div class="sn2-match-cell"><span class="sn2-match-key">Order value</span><span class="sn2-match-val">${r.match.value}</span></div>
+        <div class="sn2-match-cell"><span class="sn2-match-key">Prior tickets</span><span class="sn2-match-val">${r.match.priorTickets}</span></div>
+        <div class="sn2-match-cell" style="grid-column: 1 / -1;"><span class="sn2-match-key">Lifetime value</span><span class="sn2-match-val">${r.match.ltv}</span></div>
+      </div>
+    </div>
+    <div class="sn2-summary-card">
+      <div class="sn2-card-titlerow">
+        <div class="sn2-icon" style="background:white;color:#6366f1;border:1px solid #e2e8f0;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="13" y2="17"/></svg>
+        </div>
+        <p class="sn2-card-label">Case summary</p>
+      </div>
+      <p class="sn2-summary">${r.summary}</p>
+    </div>
+    <div class="sn2-action-card">
+      <div class="sn2-card-titlerow" style="position:relative;z-index:1;">
+        <div class="sn2-icon" style="background:rgba(255,255,255,0.2);color:white;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <p class="sn2-card-label">Recommended action</p>
+      </div>
+      <p class="sn2-action-text">${r.action}</p>
+      <div class="sn2-buttons">
+        <button class="sn2-btn sn2-btn-primary">✓ Approve & send</button>
+        <button class="sn2-btn sn2-btn-ghost">Edit</button>
+        <button class="sn2-btn sn2-btn-ghost">Hand to human</button>
+      </div>
+    </div>
+    ${r.pattern ? `
+    <div class="sn2-pattern-card">
+      <div class="sn2-card-titlerow">
+        <div class="sn2-icon" style="background:#fbbf24;color:#451a03;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <p class="sn2-card-label">Pattern alert</p>
+      </div>
+      <p class="sn2-pattern-text">${r.pattern.text}</p>
+      <div class="sn2-pattern-route">→ Routing to ${r.pattern.type}</div>
+    </div>` : ''}
+  `;
+}
+
+render2();
+select2(1);
+</script>
