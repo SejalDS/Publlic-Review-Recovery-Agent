@@ -10,7 +10,7 @@ This agent extends Agentforce into that gap.
 
 ## How it works
 
-Show Image https://github.com/SejalDS/Publlic-Review-Recovery-Agent/blob/main/Public%20Review%20Agent.png
+![Image](https://github.com/SejalDS/Publlic-Review-Recovery-Agent/blob/main/Public%20Review%20Agent.png)
 
 ### Sources — watches Trustpilot, BBB, Amazon, Reddit for new complaints.
 
