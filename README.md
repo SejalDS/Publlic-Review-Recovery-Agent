@@ -4,11 +4,11 @@ An idea for an AI agent that watches public review sites for SharkNinja complain
 
 Live prototype → https://sejalds.github.io/Publlic-Review-Recovery-Agent/
 
-##The idea
+## The idea
 SharkNinja's Good Call program does great work for customers who reach out. But many customers skip the call and post on Trustpilot, BBB, or Amazon instead. Those reviews shape the public score and reach future buyers — and Agentforce, by design, doesn't see them.
 This agent extends Agentforce into that gap.
 
-##How it works
+## How it works
 
 Show Image
 
